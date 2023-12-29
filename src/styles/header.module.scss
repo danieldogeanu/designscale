@@ -1,0 +1,24 @@
+
+.header {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  grid-template-rows: 1fr;
+  grid-column-gap: rem(30px);
+  grid-row-gap: rem(30px);
+  width: 100%;
+}
+
+.left {
+  outline: 1px dotted red;
+  text-align: left;
+}
+
+.center {
+  outline: 1px dotted red;
+  text-align: center;
+}
+
+.right {
+  outline: 1px dotted red;
+  text-align: right;
+}
