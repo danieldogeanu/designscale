@@ -5,7 +5,7 @@ import './styles/global.scss';
 
 export default function App() {
   return (
-    <MantineProvider>
+    <MantineProvider defaultColorScheme='auto'>
       <Header />
       <div>Mantine</div>
     </MantineProvider>

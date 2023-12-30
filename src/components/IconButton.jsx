@@ -3,7 +3,7 @@ import { ActionIcon } from '@mantine/core';
 /**
  * @param {{icon: JSX.Element, label: string}} props The element props.
  */
-export default function IconButton({icon, label}) {
+export default function IconButton({icon, label, onClick}) {
   const TablerIcon = icon;
   return (
     <ActionIcon
@@ -12,7 +12,8 @@ export default function IconButton({icon, label}) {
       size='lg'
       radius='md'
       aria-label={label}
-      title={label}>
+      title={label}
+      onClick={onClick}>
       <TablerIcon style={{width: '70%', height: '70%'}} stroke={1.5} />
     </ActionIcon>
   );
