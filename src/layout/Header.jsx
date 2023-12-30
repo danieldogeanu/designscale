@@ -1,6 +1,7 @@
 import { useMantineColorScheme } from '@mantine/core';
 import { IconHelpCircle, IconMoonStars, IconSun } from '@tabler/icons-react';
 import IconButton from '../components/IconButton';
+import FilterBar from '../components/FilterBar';
 import ScaleLogo from '../assets/scale-logo.svg?react';
 import classes from '../styles/header.module.scss';
 
@@ -14,7 +15,7 @@ export default function Header() {
         <ScaleLogo className={classes.logo} />
       </div>
       <div className={classes.center}>
-        Center
+        <FilterBar />
       </div>
       <div className={classes.right}>
         <IconButton
