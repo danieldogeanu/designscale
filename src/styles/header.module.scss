@@ -9,16 +9,15 @@
 }
 
 .left {
-  outline: 1px dotted red;
   text-align: left;
 }
 
 .center {
-  outline: 1px dotted red;
   text-align: center;
 }
 
 .right {
-  outline: 1px dotted red;
+  display: flex;
+  gap: rem(8px);
   text-align: right;
 }
