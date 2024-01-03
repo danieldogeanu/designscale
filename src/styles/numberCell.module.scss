@@ -1,0 +1,12 @@
+
+.numberCell {
+  display: block;
+  width: 100%;
+  max-width: rem(120px);
+  padding: rem(12px) rem(16px);
+  border: 1px solid var(--mantine-color-gray-4);
+  border-radius: rem(6px);
+  text-align: right;
+  white-space: nowrap;
+  overflow: hidden;
+}
