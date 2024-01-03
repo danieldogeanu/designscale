@@ -4,8 +4,11 @@
   width: 100%;
   max-width: rem(120px);
   padding: rem(12px) rem(16px);
-  border: 1px solid var(--mantine-color-gray-4);
-  border-radius: rem(6px);
+  border: 1px solid light-dark(
+    var(--mantine-color-gray-4),
+    var(--mantine-color-gray-7)
+  );
+  border-radius: var(--mantine-radius-md);
   text-align: right;
   white-space: nowrap;
   overflow: hidden;
