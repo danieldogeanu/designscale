@@ -6,5 +6,9 @@
 }
 
 body {
-  padding: rem(40px);
+  padding: rem(20px);
+
+  @media (min-width: rem(480px)) {
+    padding: rem(40px);
+  }
 }

@@ -1,6 +1,11 @@
 
 .siteLogo {
   display: block;
-  width: rem(42px);
-  height: rem(42px);
+  width: rem(34px);
+  height: rem(34px);
+
+  @media (min-width: rem(480px)) {
+    width: rem(42px);
+    height: rem(42px);
+  }
 }
