@@ -2,7 +2,6 @@
 .numberCell {
   display: block;
   width: 100%;
-  max-width: calc((100% / 2) - 8px);
   padding: rem(12px) rem(16px);
   text-align: right;
   white-space: nowrap;
@@ -12,24 +11,4 @@
     var(--mantine-color-gray-4),
     var(--mantine-color-gray-7)
   );
-
-  @media (min-width: rem(280px)) {
-    max-width: calc((100% / 3) - 12px);
-  }
-
-  @media (min-width: rem(380px)) {
-    max-width: calc((100% / 4) - 16px);
-  }
-
-  @media (min-width: rem(580px)) {
-    max-width: calc((100% / 5) - 16px);
-  }
-
-  @media (min-width: rem(740px)) {
-    max-width: calc((100% / 6) - 20px);
-  }
-
-  @media (min-width: rem(920px)) {
-    max-width: rem(120px);
-  }
 }

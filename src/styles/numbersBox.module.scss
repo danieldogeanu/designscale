@@ -1,20 +1,29 @@
 
 .numbersBox {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: auto;
   gap: rem(16px);
   margin: rem(32px) auto;
   width: 100%;
   max-width: rem(840px);
 
+  @media (min-width: rem(280px)) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
   @media (min-width: rem(380px)) {
+    grid-template-columns: repeat(4, 1fr);
     gap: rem(20px);
     margin: rem(48px) auto;
   }
 
+  @media (min-width: rem(580px)) {
+    grid-template-columns: repeat(5, 1fr);
+  }
+
   @media (min-width: rem(740px)) {
+    grid-template-columns: repeat(6, 1fr);
     gap: rem(24px);
     margin: rem(64px) auto;
   }
