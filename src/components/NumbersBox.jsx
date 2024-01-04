@@ -1,14 +1,18 @@
 import { Box } from '@mantine/core';
 import NumberCell from './NumberCell';
-import classes from '../styles/numbersBox.module.scss';
 import useNumbersScale from '../hooks/useNumbersScale';
+import useFilter from '../hooks/useFilter';
+import classes from '../styles/numbersBox.module.scss';
 
 export default function NumbersBox() {
-  const numbers = useNumbersScale(1000, 4);
+  const {state} = useFilter();
+  const numbers = useNumbersScale(state.size, state.scale);
 
   return (
     <Box className={classes.numbersBox}>
-      {numbers && numbers.map((number, index) => {
+      {numbers && numbers.filter((value) => {
+        return state.filter !== null ? value.toString().includes(state.filter) : true;
+      }).map((number, index) => {
         return <NumberCell key={index}>{number}</NumberCell>;
       })}
     </Box>
