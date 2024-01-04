@@ -1,9 +1,11 @@
+import { useState } from "react";
 import { NumberInput, Select, Box } from "@mantine/core";
 import useFilter from "../hooks/useFilter.js";
 import classes from '../styles/filterBar.module.scss';
 
 export default function FilterBar() {
   const {state, dispatch} = useFilter();  
+  const [filterValue, setFilterValue] = useState('');
   const scaleNumbers = [2, 4, 8, 10];
   const scaleValues = scaleNumbers.map((number) => ({
     value: number.toString(), label: `${number}pt Scale`,
@@ -17,7 +19,18 @@ export default function FilterBar() {
         radius='md'
         placeholder='Search Number'
         hideControls
-        onChange={(value) => dispatch({type: 'filter', value})}
+        value={filterValue}
+        onChange={(value) => {
+          setFilterValue(value);
+          dispatch({type: 'filter', value});
+        }}
+        onKeyUp={(e) => {
+          if (e.key === 'Escape') {
+            setFilterValue('');
+            dispatch({type: 'filter', value: ''});
+            e.currentTarget.blur();
+          }
+        }}
       />
       <Select
         className={classes.selector}
