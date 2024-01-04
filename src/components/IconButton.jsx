@@ -3,7 +3,7 @@ import { ActionIcon, useMantineColorScheme } from '@mantine/core';
 /**
  * @param {{icon: JSX.Element, label: string}} props The element props.
  */
-export default function IconButton({icon, label, onClick}) {
+export default function IconButton({icon, label, onClick, ...otherProps}) {
   const {colorScheme} = useMantineColorScheme();
   const TablerIcon = icon;
 
@@ -20,7 +20,8 @@ export default function IconButton({icon, label, onClick}) {
         border: `calc(0.0625rem * 1) solid ${
           colorScheme === 'light' ? theme.colors.gray[4] : theme.colors.gray[7]
         }`
-      })}>
+      })}
+      {...otherProps}>
       <TablerIcon style={{width: '70%', height: '70%'}} stroke={1.5} />
     </ActionIcon>
   );

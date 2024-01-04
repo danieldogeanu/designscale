@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { NumberInput, Select, Box } from "@mantine/core";
+import { IconX } from '@tabler/icons-react';
 import useFilter from "../hooks/useFilter.js";
+import IconButton from "./IconButton.jsx";
 import classes from '../styles/filterBar.module.scss';
 
 export default function FilterBar() {
@@ -11,6 +13,19 @@ export default function FilterBar() {
     value: number.toString(), label: `${number}pt Scale`,
   }));
 
+  // We also add style object because CSS Modules can't override style object.
+  const clearButtonStyle = {border: 'transparent'}; 
+  const ClearButton = <IconButton 
+    className={classes.clearButton} 
+    style={clearButtonStyle} 
+    icon={IconX} label='Clear Input' 
+    onClick={(e) => {
+      setFilterValue('');
+      dispatch({type: 'filter', value: ''});
+      e.currentTarget.blur();
+    }}
+  />;
+
   return (
     <Box className={classes.filterBar}>
       <NumberInput
@@ -18,7 +33,6 @@ export default function FilterBar() {
         size='md'
         radius='md'
         placeholder='Search Number'
-        hideControls
         value={filterValue}
         onChange={(value) => {
           setFilterValue(value);
@@ -31,6 +45,8 @@ export default function FilterBar() {
             e.currentTarget.blur();
           }
         }}
+        rightSection={filterValue !== '' ? ClearButton : null}
+        hideControls
       />
       <Select
         className={classes.selector}
