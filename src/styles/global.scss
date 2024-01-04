@@ -5,6 +5,10 @@
   box-sizing: border-box;
 }
 
+html {
+  scrollbar-gutter: stable;
+}
+
 body {
   padding: rem(28px);
 
