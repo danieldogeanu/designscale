@@ -18,13 +18,13 @@ export const FilterContext = createContext(defaultState);
 function filterReducer(state, action) {
   switch (action.type) {
     case 'filter': {
-      return {...state, filter: parseInt(action.value)};
+      return {...state, filter: (action.value !== '') ? parseInt(action.value) : null};
     }
     case 'scale': {
-      return {...state, scale: parseInt(action.value)};
+      return {...state, scale: (action.value !== '') ? parseInt(action.value) : 0};
     }
     case 'size': {
-      return {...state, size: parseInt(action.value)};
+      return {...state, size: (action.value !== '') ? parseInt(action.value) : 0};
     }
     default: {
       throw new Error(`Unhandled action type: ${action.type}`);
