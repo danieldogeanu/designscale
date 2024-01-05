@@ -9,7 +9,7 @@ html {
   scrollbar-gutter: stable;
 }
 
-body {
+.appContainer {
   padding: rem(28px);
 
   @media (min-width: rem(480px)) {

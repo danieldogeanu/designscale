@@ -1,4 +1,4 @@
-import { MantineProvider } from '@mantine/core';
+import { Box, MantineProvider } from '@mantine/core';
 import FilterProvider from './providers/FilterProvider';
 import Header from './layout/Header';
 import NumbersBox from './components/NumbersBox';
@@ -10,9 +10,11 @@ export default function App() {
   return (
     <MantineProvider defaultColorScheme='auto'>
       <FilterProvider>
-        <Header />
-        <NumbersBox />
-        <ScrollTop />
+        <Box className='appContainer'>
+          <Header />
+          <NumbersBox />
+          <ScrollTop />
+        </Box>
       </FilterProvider>
     </MantineProvider>
   );
