@@ -1,11 +1,13 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { NumberInput, Select, Box } from "@mantine/core";
+import { useWindowEvent } from "@mantine/hooks";
 import { IconX } from '@tabler/icons-react';
 import useFilter from "../hooks/useFilter.js";
 import IconButton from "./IconButton.jsx";
 import classes from '../styles/filterBar.module.scss';
 
 export default function FilterBar() {
+  const searchRef = useRef();
   const {state, dispatch} = useFilter();  
   const [filterValue, setFilterValue] = useState('');
   const scaleNumbers = [2, 4, 8, 10];
@@ -26,6 +28,14 @@ export default function FilterBar() {
     }}
   />;
 
+  // Add keypress event listener to focus search input.
+  useWindowEvent('keypress', (e) => {
+    if (e.key === '/' || e.key === 's') {
+      e.preventDefault();
+      searchRef.current.focus();
+    }
+  });
+
   return (
     <Box className={classes.filterBar}>
       <NumberInput
@@ -34,6 +44,7 @@ export default function FilterBar() {
         radius='md'
         placeholder='Search Number'
         value={filterValue}
+        ref={searchRef}
         onChange={(value) => {
           setFilterValue(value);
           dispatch({type: 'filter', value});
