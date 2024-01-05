@@ -1,5 +1,5 @@
 import { Affix, Transition, useMantineColorScheme } from '@mantine/core';
-import { useWindowScroll, useMediaQuery } from '@mantine/hooks';
+import { useWindowScroll, useMediaQuery, useWindowEvent } from '@mantine/hooks';
 import { IconArrowUp } from '@tabler/icons-react';
 import IconButton from './IconButton';
 
@@ -9,6 +9,10 @@ export default function ScrollTop() {
   const matchesMediaQuery = useMediaQuery(`(min-width: 480px)`);
   const buttonMargin = matchesMediaQuery ? 40 : 28;
   const buttonSize = matchesMediaQuery ? 42 : 48;
+
+  useWindowEvent('keyup', (e) => {
+    if (e.key === 'u') scrollTo({y: 0});
+  });
 
   return (
     <Affix position={{bottom: buttonMargin, right: buttonMargin}}>
