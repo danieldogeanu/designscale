@@ -24,7 +24,7 @@ export default function FilterBar() {
     title='Press ESC key to clear input.'
   >ESC</ShortcutKey>;
   const ClearButton = <Group wrap='nowrap' gap={4} 
-    style={{marginRight: rem(36)}}>
+    style={{marginRight: rem(48)}}>
     {EscKeyShortcut}
     <IconButton 
       style={{border: 'transparent'}} 
