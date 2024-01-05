@@ -1,9 +1,10 @@
-import { Affix, Transition } from '@mantine/core';
+import { Affix, Transition, useMantineColorScheme } from '@mantine/core';
 import { useWindowScroll, useMediaQuery } from '@mantine/hooks';
 import { IconArrowUp } from '@tabler/icons-react';
 import IconButton from './IconButton';
 
 export default function ScrollTop() {
+  const {colorScheme} = useMantineColorScheme();
   const [scroll, scrollTo] = useWindowScroll();
   const matchesMediaQuery = useMediaQuery(`(min-width: 480px)`);
   const buttonMargin = matchesMediaQuery ? 40 : 28;
@@ -19,7 +20,10 @@ export default function ScrollTop() {
             onClick={() => scrollTo({y: 0})}
             size={buttonSize}
             style={(theme) => ({
-              backgroundColor: theme.white,
+              backgroundColor: colorScheme === 'light' ? theme.white : theme.colors.gray[9],
+              border: `calc(0.0625rem * 1) solid ${
+                colorScheme === 'light' ? theme.colors.gray[4] : theme.colors.gray[7]
+              }`,
               boxShadow: theme.shadows.sm,
               ...transitionStyles,
             })} 
