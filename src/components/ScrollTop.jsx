@@ -8,7 +8,7 @@ export default function ScrollTop() {
   const [scroll, scrollTo] = useWindowScroll();
   const matchesMediaQuery = useMediaQuery(`(min-width: 480px)`);
   const buttonMargin = matchesMediaQuery ? 40 : 28;
-  const buttonSize = matchesMediaQuery ? 40 : 48;
+  const buttonSize = matchesMediaQuery ? 42 : 48;
 
   return (
     <Affix position={{bottom: buttonMargin, right: buttonMargin}}>

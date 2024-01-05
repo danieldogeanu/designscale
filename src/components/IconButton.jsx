@@ -11,7 +11,7 @@ export default function IconButton({icon, label, onClick, ...otherProps}) {
     <ActionIcon
       variant='outline'
       color='gray'
-      size='lg'
+      size={42}
       radius='md'
       aria-label={label}
       title={label}
@@ -22,7 +22,7 @@ export default function IconButton({icon, label, onClick, ...otherProps}) {
         }`
       })}
       {...otherProps}>
-      <TablerIcon style={{width: '70%', height: '70%'}} stroke={1.5} />
+      <TablerIcon style={{width: '60%', height: '60%'}} stroke={1.5} />
     </ActionIcon>
   );
 }
