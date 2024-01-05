@@ -1,9 +1,10 @@
 import { useRef, useState } from "react";
-import { NumberInput, Select, Box } from "@mantine/core";
+import { NumberInput, Select, Box, Group, rem } from "@mantine/core";
 import { useWindowEvent } from "@mantine/hooks";
 import { IconX } from '@tabler/icons-react';
 import useFilter from "../hooks/useFilter.js";
 import IconButton from "./IconButton.jsx";
+import ShortcutKey from "./ShortcutKey.jsx";
 import classes from '../styles/filterBar.module.scss';
 
 export default function FilterBar() {
@@ -15,18 +16,26 @@ export default function FilterBar() {
     value: number.toString(), label: `${number}pt Scale`,
   }));
 
-  // We also add style object because CSS Modules can't override style object.
-  const clearButtonStyle = {border: 'transparent'}; 
-  const ClearButton = <IconButton 
-    className={classes.clearButton} 
-    style={clearButtonStyle} 
-    icon={IconX} label='Clear Input' 
-    onClick={(e) => {
-      setFilterValue('');
-      dispatch({type: 'filter', value: ''});
-      e.currentTarget.blur();
-    }}
-  />;
+  const SlashKeyShortcut = <ShortcutKey
+    style={{marginRight: rem(14)}}
+    title='Press slash key to focus.'
+  >/</ShortcutKey>;
+  const EscKeyShortcut = <ShortcutKey
+    title='Press ESC key to clear input.'
+  >ESC</ShortcutKey>;
+  const ClearButton = <Group wrap='nowrap' gap={4} 
+    style={{marginRight: rem(36)}}>
+    {EscKeyShortcut}
+    <IconButton 
+      style={{border: 'transparent'}} 
+      icon={IconX} label='Clear Input' size='lg'
+      onClick={(e) => {
+        setFilterValue('');
+        dispatch({type: 'filter', value: ''});
+        e.currentTarget.blur();
+      }}
+    />
+  </Group>;
 
   // Add keypress event listener to focus search input.
   useWindowEvent('keypress', (e) => {
@@ -56,7 +65,7 @@ export default function FilterBar() {
             e.currentTarget.blur();
           }
         }}
-        rightSection={filterValue !== '' ? ClearButton : null}
+        rightSection={filterValue !== '' ? ClearButton : SlashKeyShortcut}
         hideControls
       />
       <Select
