@@ -1,8 +1,19 @@
 {
   "name": "scale-cheat-sheet",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
+  "keywords": ["react", "vite", "mantine", "scale", "cheat", "sheet", "design", "ui", "ux"],
+  "author": "Daniel Dogeanu <contact@danieldogeanu.com> (https://danieldogeanu.com/)",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/danieldogeanu/scale-cheat-sheet.git"
+  },
+  "bugs": {
+    "url": "https://github.com/danieldogeanu/scale-cheat-sheet/issues"
+  },
+  "homepage": "https://github.com/danieldogeanu/scale-cheat-sheet#readme",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
