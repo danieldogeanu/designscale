@@ -9,6 +9,10 @@ html {
   scrollbar-gutter: stable;
 }
 
+body.scs {
+  margin-right: 0 !important;
+}
+
 .appContainer {
   padding: rem(28px);
 
