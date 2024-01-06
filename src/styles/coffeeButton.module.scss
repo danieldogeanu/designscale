@@ -1,0 +1,22 @@
+
+.coffeeButton {
+  display: block;
+  
+  a {
+    display: inline-block;
+    box-shadow: 0 rem(8px) rem(30px) 0 light-dark(rgba(0,0,0,0.2), rgba(255,255,255,0.2));
+    border-radius: rem(8px);
+    transition: box-shadow 100ms ease-in;
+    
+    &:hover {
+      box-shadow: 0 rem(2px) rem(20px) 0 light-dark(rgba(0,0,0,0.2), rgba(255,255,255,0.2));
+    }
+  }
+
+  img {
+    display: block;
+    height: rem(50px) !important;
+    width: auto !important;
+    margin-bottom: 0 !important;
+  }
+}

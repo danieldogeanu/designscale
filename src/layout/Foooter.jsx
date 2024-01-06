@@ -2,6 +2,7 @@ import { IconBrandGithub, IconBrandLinkedin, IconBrandInstagram, IconBrandDribbb
 import { Group, Stack, TypographyStylesProvider } from '@mantine/core';
 import SocialIcon from '../components/SocialIcon';
 import classes from '../styles/footer.module.scss';
+import CoffeeButton from '../components/CoffeeButton';
 
 export default function Footer() {
   const urls = {
@@ -17,7 +18,8 @@ export default function Footer() {
     <TypographyStylesProvider style={{paddingLeft: 0}}>
       <footer className={classes.footer}>
         <div className={classes.donate}>
-          <p>If this was useful to you, you can buy me a coffee.</p>
+          <p>If this app was useful to you...</p>
+          <CoffeeButton />
         </div>
         <div className={classes.socials}>
           <Group gap={4} justify='center'>
