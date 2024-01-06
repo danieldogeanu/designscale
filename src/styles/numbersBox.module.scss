@@ -27,4 +27,16 @@
     gap: rem(24px);
     margin: rem(64px) auto;
   }
+
+}
+
+.notFound {
+  display: block;
+  grid-column-start: 1;
+  grid-column-end: span 6;
+  text-align: center;
+  color: light-dark(
+    var(--mantine-color-gray-7),
+    var(--mantine-color-gray-5),
+  );
 }
