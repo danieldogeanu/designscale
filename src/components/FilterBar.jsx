@@ -49,9 +49,10 @@ export default function FilterBar() {
     <Box className={classes.filterBar}>
       <NumberInput
         className={classes.search}
+        placeholder='Search Number'
+        title='Search for a number to check if it matches the scale.'
         size='md'
         radius='md'
-        placeholder='Search Number'
         value={filterValue}
         ref={searchRef}
         onChange={(value) => {
@@ -70,6 +71,7 @@ export default function FilterBar() {
       />
       <Select
         className={classes.selector}
+        title='Change the scale at which numbers are generated.'
         size='md'
         radius='md'
         data={scaleValues}
@@ -80,6 +82,7 @@ export default function FilterBar() {
       />
       <NumberInput
         className={classes.size}
+        title='Change the amount of numbers from which to generate the scale.'
         size='md'
         radius='md'
         defaultValue={state.size}
