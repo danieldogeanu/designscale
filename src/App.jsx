@@ -9,7 +9,7 @@ import './styles/global.scss';
 
 export default function App() {
   return (
-    <MantineProvider defaultColorScheme='auto'>
+    <MantineProvider defaultColorScheme='light'>
       <FilterProvider>
         <Box className='appContainer'>
           <Header />
