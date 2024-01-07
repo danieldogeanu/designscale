@@ -16,7 +16,7 @@
     ],
     "theme_color": "#ffffff",
     "background_color": "#ffffff",
-    "start_url": "https://scale-cheat-sheet.ddsv.eu",
-    "scope": "https://scale-cheat-sheet.ddsv.eu",
+    "start_url": "https://designscale.ddsv.eu",
+    "scope": "https://designscale.ddsv.eu",
     "display": "standalone"
 }

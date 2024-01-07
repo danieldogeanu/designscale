@@ -1,5 +1,5 @@
 {
-  "name": "scale-cheat-sheet",
+  "name": "designscale",
   "private": true,
   "version": "1.0.0",
   "type": "module",
@@ -8,12 +8,12 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/danieldogeanu/scale-cheat-sheet.git"
+    "url": "git+https://github.com/danieldogeanu/designscale.git"
   },
   "bugs": {
-    "url": "https://github.com/danieldogeanu/scale-cheat-sheet/issues"
+    "url": "https://github.com/danieldogeanu/designscale/issues"
   },
-  "homepage": "https://github.com/danieldogeanu/scale-cheat-sheet#readme",
+  "homepage": "https://github.com/danieldogeanu/designscale#readme",
   "scripts": {
     "dev": "vite",
     "build": "vite build",

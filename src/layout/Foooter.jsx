@@ -9,7 +9,7 @@ export default function Footer() {
   const matchesMediaQuery = useMediaQuery('(min-width: 480px)');
   const urls = {
     danieldogeanu: 'https://danieldogeanu.com',
-    project: 'https://github.com/danieldogeanu/scale-cheat-sheet',
+    project: 'https://github.com/danieldogeanu/designscale',
     github: 'https://github.com/danieldogeanu',
     linkedin: 'https://www.linkedin.com/in/danieldogeanu/',
     instagram: 'https://www.instagram.com/danieldogeanu/',
