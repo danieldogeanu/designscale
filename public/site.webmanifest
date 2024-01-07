@@ -1,6 +1,7 @@
 {
     "name": "Scale Cheat Sheet",
     "short_name": "SCS",
+    "description": "A design scale cheat sheet to be used for spacing or size values in a project.",
     "icons": [
         {
             "src": "/favicons/android-chrome-192x192.png",
@@ -16,5 +17,6 @@
     "theme_color": "#ffffff",
     "background_color": "#ffffff",
     "start_url": "https://scale-cheat-sheet.ddsv.eu",
+    "scope": "https://scale-cheat-sheet.ddsv.eu",
     "display": "standalone"
 }
