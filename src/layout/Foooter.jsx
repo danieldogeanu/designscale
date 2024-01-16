@@ -2,7 +2,6 @@ import { IconBrandGithub, IconBrandLinkedin, IconBrandInstagram, IconBrandDribbb
 import { Group, Stack, TypographyStylesProvider } from '@mantine/core';
 import { useMediaQuery } from '@mantine/hooks';
 import SocialIcon from '../components/SocialIcon';
-import CoffeeButton from '../components/CoffeeButton';
 import classes from '../styles/footer.module.scss';
 
 export default function Footer() {
@@ -34,10 +33,6 @@ export default function Footer() {
               <p>View project on <a href={urls.project} target='_blank' rel='noreferrer'>GitHub</a>.</p>
             </Stack>
           </div>
-        </div>
-        <div className={classes.donate}>
-          <p>If this app was useful to you...</p>
-          <CoffeeButton />
         </div>
       </footer>
     </TypographyStylesProvider>
