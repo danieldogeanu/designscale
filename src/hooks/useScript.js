@@ -12,7 +12,7 @@ export default function useScript(source, options = {}, attributes = {}) {
     const script = document.createElement('script');
 
     // Set `src` attribute.
-    if (typeof source === 'string') script.src = source;
+    if (typeof source === 'string' && source !== '') script.src = source;
 
     // Set `async` attribute.
     if (typeof options === 'object' && Object.prototype.hasOwnProperty.call(options, 'async')) {
