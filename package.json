@@ -3,7 +3,17 @@
   "private": true,
   "version": "1.0.0",
   "type": "module",
-  "keywords": ["react", "vite", "mantine", "scale", "cheat", "sheet", "design", "ui", "ux"],
+  "keywords": [
+    "react",
+    "vite",
+    "mantine",
+    "scale",
+    "cheat",
+    "sheet",
+    "design",
+    "ui",
+    "ux"
+  ],
   "author": "Daniel Dogeanu <contact@danieldogeanu.com> (https://danieldogeanu.com/)",
   "license": "MIT",
   "repository": {
@@ -24,6 +34,7 @@
     "@mantine/core": "^7.3.2",
     "@mantine/hooks": "^7.3.2",
     "@tabler/icons-react": "^2.44.0",
+    "dotenv": "^16.3.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
