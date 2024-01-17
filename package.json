@@ -3,7 +3,17 @@
   "private": true,
   "version": "1.0.0",
   "type": "module",
-  "keywords": ["react", "vite", "mantine", "scale", "cheat", "sheet", "design", "ui", "ux"],
+  "keywords": [
+    "react",
+    "vite",
+    "mantine",
+    "scale",
+    "cheat",
+    "sheet",
+    "design",
+    "ui",
+    "ux"
+  ],
   "author": "Daniel Dogeanu <contact@danieldogeanu.com> (https://danieldogeanu.com/)",
   "license": "MIT",
   "repository": {
