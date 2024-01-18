@@ -1,6 +1,7 @@
 import { IconBrandGithub, IconBrandLinkedin, IconBrandInstagram, IconBrandDribbble } from '@tabler/icons-react';
 import { Group, Stack, TypographyStylesProvider } from '@mantine/core';
 import { useMediaQuery } from '@mantine/hooks';
+import { umamiEventTypes } from '../utils';
 import SocialIcon from '../components/SocialIcon';
 import classes from '../styles/footer.module.scss';
 
@@ -29,8 +30,8 @@ export default function Footer() {
           </div>
           <div className={classes.copyright}>
             <Stack gap={0}>
-              <p>Made by <a href={urls.danieldogeanu} target='_blank' rel='noreferrer' data-umami-event='Website: Daniel Dogeanu'>Daniel Dogeanu</a>.</p>
-              <p>View project on <a href={urls.project} target='_blank' rel='noreferrer' data-umami-event='Website: GitHub'>GitHub</a>.</p>
+              <p>Made by <a href={urls.danieldogeanu} target='_blank' rel='noreferrer' data-umami-event={`${umamiEventTypes.website}: Daniel Dogeanu`}>Daniel Dogeanu</a>.</p>
+              <p>View project on <a href={urls.project} target='_blank' rel='noreferrer' data-umami-event={`${umamiEventTypes.website}: GitHub`}>GitHub</a>.</p>
             </Stack>
           </div>
         </div>

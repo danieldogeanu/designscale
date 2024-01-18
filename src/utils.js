@@ -9,3 +9,12 @@ export function umamiTrack(eventName, eventData = {}) {
     window.umami.track(eventName, eventData);
   }
 }
+
+/** Object with Umami event types for consistency. */
+export const umamiEventTypes = {
+  button: 'Button',
+  key: 'Key Event',
+  filter: 'Filter',
+  social: 'Social Icon',
+  website: 'Website',
+};
