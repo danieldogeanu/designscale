@@ -1,4 +1,5 @@
 import { ActionIcon, useMantineColorScheme } from '@mantine/core';
+import { umamiTrack } from '../utils';
 
 /**
  * @param {{icon: JSX.Element, label: string}} props The element props.
@@ -17,9 +18,7 @@ export default function IconButton({icon, label, onClick, ...otherProps}) {
       title={label}
       onClick={(e) => {
         onClick(e);
-        if (window.umami) {
-          window.umami.track(`Button: ${label}`);
-        }
+        umamiTrack(`Button: ${label}`);
       }}
       style={(theme) => ({
         border: `calc(0.0625rem * 1) solid ${
