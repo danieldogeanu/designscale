@@ -5,7 +5,7 @@
  * @param {object} eventData An object with the event data you want to track.
  */
 export function umamiTrack(eventName, eventData = {}) {
-  if (window.umami && typeof eventName === 'string' && typeof eventData === 'object') {
+  if (window.umami && (typeof eventName === 'string' && eventName !== '') && typeof eventData === 'object') {
     window.umami.track(eventName, eventData);
   }
 }
