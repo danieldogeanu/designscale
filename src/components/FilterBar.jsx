@@ -2,6 +2,7 @@ import { useRef, useState } from "react";
 import { NumberInput, Select, Box, Group, rem } from "@mantine/core";
 import { useWindowEvent } from "@mantine/hooks";
 import { IconX } from '@tabler/icons-react';
+import { umamiEventTypes, umamiTrack } from "../utils.js";
 import useFilter from "../hooks/useFilter.js";
 import IconButton from "./IconButton.jsx";
 import ShortcutKey from "./ShortcutKey.jsx";
@@ -42,6 +43,7 @@ export default function FilterBar() {
     if (e.key === '/' || e.key === 's') {
       e.preventDefault();
       searchRef.current.focus();
+      umamiTrack(`${umamiEventTypes.key}: Focus Search Number`, {pressed: e.key});
     }
   });
 
@@ -50,6 +52,7 @@ export default function FilterBar() {
       <NumberInput
         className={classes.search}
         placeholder='Search Number'
+        data-umami-event={`${umamiEventTypes.filter}: Search Number`}
         title='Search for a number to check if it matches the scale.'
         size='md'
         radius='md'
@@ -64,6 +67,7 @@ export default function FilterBar() {
             setFilterValue('');
             dispatch({type: 'filter', value: ''});
             e.currentTarget.blur();
+            umamiTrack(`${umamiEventTypes.key}: Blur Search Number`, {pressed: e.key});
           }
         }}
         rightSection={filterValue !== '' ? ClearButton : SlashKeyShortcut}
@@ -71,17 +75,23 @@ export default function FilterBar() {
       />
       <Select
         className={classes.selector}
+        data-umami-event={`${umamiEventTypes.filter}: Scale Selector`}
         title='Change the scale at which numbers are generated.'
         size='md'
         radius='md'
         data={scaleValues}
         defaultValue={scaleValues[1].value.toString()}
-        onChange={(value) => dispatch({type: 'scale', value})}
+        onChange={(value) => {
+          dispatch({type: 'scale', value});
+          const valueLabel = (scaleValues.find((item) => (item.value === value))).label;
+          umamiTrack(`${umamiEventTypes.value}: Scale Selector`, {value: valueLabel});
+        }}
         withCheckIcon={false}
         allowDeselect={false}
       />
       <NumberInput
         className={classes.size}
+        data-umami-event={`${umamiEventTypes.filter}: Numbers Amount`}
         title='Change the amount of numbers from which to generate the scale.'
         size='md'
         radius='md'

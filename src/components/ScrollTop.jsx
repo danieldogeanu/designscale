@@ -1,6 +1,7 @@
 import { Affix, Transition, useMantineColorScheme } from '@mantine/core';
 import { useWindowScroll, useMediaQuery, useWindowEvent } from '@mantine/hooks';
 import { IconArrowUp } from '@tabler/icons-react';
+import { umamiEventTypes, umamiTrack } from '../utils';
 import IconButton from './IconButton';
 
 export default function ScrollTop() {
@@ -11,7 +12,10 @@ export default function ScrollTop() {
   const buttonSize = matchesMediaQuery ? 42 : 48;
 
   useWindowEvent('keyup', (e) => {
-    if (e.key === 'u') scrollTo({y: 0});
+    if (e.key === 'u') {
+      scrollTo({y: 0});
+      umamiTrack(`${umamiEventTypes.key}: Scroll to Top`);
+    }
   });
 
   return (

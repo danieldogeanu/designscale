@@ -1,6 +1,7 @@
 import { Box, useMantineColorScheme } from '@mantine/core';
 import { IconHelpCircle, IconMoonStars, IconSun } from '@tabler/icons-react';
 import { useDisclosure, useWindowEvent } from '@mantine/hooks';
+import { umamiEventTypes, umamiTrack } from '../utils';
 import IconButton from '../components/IconButton';
 import HelpDrawer from './HelpDrawer';
 import classes from '../styles/actionMenu.module.scss';
@@ -11,8 +12,14 @@ export default function ActionMenu() {
   const isLightTheme = colorScheme === 'light' || colorScheme === 'auto';
 
   useWindowEvent('keyup', (e) => {
-    if (e.key === 't') toggleColorScheme();
-    if (e.key === 'h') opened ? close() : open();
+    if (e.key === 't') {
+      toggleColorScheme();
+      umamiTrack(`${umamiEventTypes.key}: Theme Switcher`);
+    }
+    if (e.key === 'h') {
+      opened ? close() : open();
+      umamiTrack(`${umamiEventTypes.key}: Help Menu`);
+    }
   });
 
   return (
