@@ -8,7 +8,7 @@ export default function SocialIcon({icon, label, href, ...otherProps}) {
   const TablerIcon = icon;
 
   return (
-    <Anchor href={href} target='_blank'>
+    <Anchor href={href} target='_blank' data-umami-event={`Social Icon: ${label}`}>
       <ActionIcon
         variant='subtle'
         color={theme.colors.gray[6]}

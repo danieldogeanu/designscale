@@ -50,6 +50,7 @@ export default function FilterBar() {
       <NumberInput
         className={classes.search}
         placeholder='Search Number'
+        data-umami-event='Filter: Search Number'
         title='Search for a number to check if it matches the scale.'
         size='md'
         radius='md'
@@ -71,6 +72,7 @@ export default function FilterBar() {
       />
       <Select
         className={classes.selector}
+        data-umami-event='Filter: Scale Selector'
         title='Change the scale at which numbers are generated.'
         size='md'
         radius='md'
@@ -79,9 +81,10 @@ export default function FilterBar() {
         onChange={(value) => dispatch({type: 'scale', value})}
         withCheckIcon={false}
         allowDeselect={false}
-      />
+        />
       <NumberInput
         className={classes.size}
+        data-umami-event='Filter: Numbers Amount'
         title='Change the amount of numbers from which to generate the scale.'
         size='md'
         radius='md'

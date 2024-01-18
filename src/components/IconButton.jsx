@@ -15,7 +15,12 @@ export default function IconButton({icon, label, onClick, ...otherProps}) {
       radius='md'
       aria-label={label}
       title={label}
-      onClick={onClick}
+      onClick={(e) => {
+        onClick(e);
+        if (window.umami) {
+          window.umami.track(`Button: ${label}`);
+        }
+      }}
       style={(theme) => ({
         border: `calc(0.0625rem * 1) solid ${
           colorScheme === 'light' ? theme.colors.gray[4] : theme.colors.gray[7]
