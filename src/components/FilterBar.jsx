@@ -81,7 +81,11 @@ export default function FilterBar() {
         radius='md'
         data={scaleValues}
         defaultValue={scaleValues[1].value.toString()}
-        onChange={(value) => dispatch({type: 'scale', value})}
+        onChange={(value) => {
+          dispatch({type: 'scale', value});
+          const valueLabel = (scaleValues.find((item) => (item.value === value))).label;
+          umamiTrack(`${umamiEventTypes.value}: Scale Selector`, {value: valueLabel});
+        }}
         withCheckIcon={false}
         allowDeselect={false}
       />

@@ -15,6 +15,7 @@ export const umamiEventTypes = {
   button: 'Button',
   key: 'Key Event',
   filter: 'Filter',
+  value: 'Value',
   social: 'Social Icon',
   website: 'Website',
 };
