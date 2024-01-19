@@ -1,13 +1,15 @@
-import { createContext, useReducer } from 'react';
+import { createContext } from 'react';
+import usePersistentReducer from '../hooks/usePersistentReducer';
 
-const defaultState = {
+const LOCAL_STORAGE_KEY = 'filter-state';
+const INITIAL_STATE = {
   filter: null,
   scale: 4,
   size: 1000,
 };
 
 /** React context for global filter state. */
-export const FilterContext = createContext(defaultState);
+export const FilterContext = createContext(INITIAL_STATE);
 
 /**
  * Reducer that updates the filter state for the FilterProvider.
@@ -38,7 +40,7 @@ function filterReducer(state, action) {
  * @returns Returns the context provider for React.
  */
 export default function FilterProvider({children}) {
-  const [state, dispatch] = useReducer(filterReducer, defaultState);
+  const [state, dispatch] = usePersistentReducer(filterReducer, LOCAL_STORAGE_KEY, INITIAL_STATE);
   const value = {state, dispatch};
 
   return <FilterContext.Provider value={value}>{children}</FilterContext.Provider>;

@@ -7,7 +7,7 @@ import { FilterContext } from '../providers/FilterProvider';
  *    filter: number | null, scale: number, size: number
  * }, dispatch: ({
  *    type: 'filter' | 'scale' | 'size', value: number | string
- * }) => {}}} Returns the global filter state from the FilterProvider.
+ * })}} Returns the global filter state from the FilterProvider.
  */
 export default function useFilter() {
   const context = useContext(FilterContext);

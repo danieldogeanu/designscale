@@ -11,20 +11,22 @@ import classes from '../styles/filterBar.module.scss';
 export default function FilterBar() {
   const searchRef = useRef();
   const {state, dispatch} = useFilter();  
-  const [filterValue, setFilterValue] = useState('');
+  const [filterValue, setFilterValue] = useState(state.filter !== null ? state.filter : '');
   const scaleNumbers = [2, 4, 8, 10];
   const scaleValues = scaleNumbers.map((number) => ({
     value: number.toString(), label: `${number}pt Scale`,
   }));
 
-  const SlashKeyShortcut = <ShortcutKey
+  const SlashKeyShortcut = (<ShortcutKey
     style={{marginRight: rem(14)}}
     title='Press slash key to focus.'
-  >/</ShortcutKey>;
-  const EscKeyShortcut = <ShortcutKey
+  >/</ShortcutKey>);
+
+  const EscKeyShortcut = (<ShortcutKey
     title='Press ESC key to clear input.'
-  >ESC</ShortcutKey>;
-  const ClearButton = <Group wrap='nowrap' gap={4} 
+  >ESC</ShortcutKey>);
+
+  const ClearButton = (<Group wrap='nowrap' gap={4} 
     style={{marginRight: rem(48)}}>
     {EscKeyShortcut}
     <IconButton 
@@ -36,7 +38,7 @@ export default function FilterBar() {
         e.currentTarget.blur();
       }}
     />
-  </Group>;
+  </Group>);
 
   // Add keypress event listener to focus search input.
   useWindowEvent('keypress', (e) => {
@@ -49,6 +51,7 @@ export default function FilterBar() {
 
   return (
     <Box className={classes.filterBar}>
+
       <NumberInput
         className={classes.search}
         placeholder='Search Number'
@@ -73,6 +76,7 @@ export default function FilterBar() {
         rightSection={filterValue !== '' ? ClearButton : SlashKeyShortcut}
         hideControls
       />
+
       <Select
         className={classes.selector}
         data-umami-event={`${umamiEventTypes.filter}: Scale Selector`}
@@ -80,7 +84,7 @@ export default function FilterBar() {
         size='md'
         radius='md'
         data={scaleValues}
-        defaultValue={scaleValues[1].value.toString()}
+        defaultValue={state.scale.toString()}
         onChange={(value) => {
           dispatch({type: 'scale', value});
           const valueLabel = (scaleValues.find((item) => (item.value === value))).label;
@@ -89,6 +93,7 @@ export default function FilterBar() {
         withCheckIcon={false}
         allowDeselect={false}
       />
+
       <NumberInput
         className={classes.size}
         data-umami-event={`${umamiEventTypes.filter}: Numbers Amount`}
@@ -100,6 +105,7 @@ export default function FilterBar() {
         max={1000000}
         onChange={(value) => dispatch({type: 'size', value})}
       />
+
     </Box>
   );
 }
