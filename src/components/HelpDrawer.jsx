@@ -26,6 +26,7 @@ export default function HelpDrawer(props) {
         <HelpEntry shortcut='ESC' description='Clears search input and removes focus.' />
         <HelpEntry shortcut='T' description='Toggles the theme from light to dark mode.' />
         <HelpEntry shortcut='U' description='Scrolls back to the top of the page.' />
+        <HelpEntry shortcut='R' description='Resets all filter values to default ones.' />
         <HelpEntry shortcut='H' description='Opens and closes the Keyboards Shortcuts help menu.' />
         <HelpEntry shortcut='ESC' description='Also closes the Keyboards Shortcuts help menu.' />
       </Stack>
