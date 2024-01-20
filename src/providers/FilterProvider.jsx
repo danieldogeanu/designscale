@@ -28,6 +28,9 @@ function filterReducer(state, action) {
     case 'size': {
       return {...state, size: (action.value !== '') ? parseInt(action.value) : 0};
     }
+    case 'reset': {
+      return {...INITIAL_STATE};
+    }
     default: {
       throw new Error(`Unhandled action type: ${action.type}`);
     }
