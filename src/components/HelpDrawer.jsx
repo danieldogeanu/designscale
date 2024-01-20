@@ -8,19 +8,22 @@ export default function HelpDrawer(props) {
     <Drawer title='Keyboard Shortcuts'
       position='right' size={580} 
       overlayProps={{backgroundOpacity: 0.6, blur: 4}}
-      styles={{
+      styles={(theme) => ({
         title: {
           fontWeight: '600',
           fontSize: rem(18),
         },
-        content: {
-          padding: rem(24),
+        header: {
+          padding: `${rem(32)} ${rem(40)}`,
+          borderBottom: `1px solid ${
+            colorScheme === 'light' ? theme.colors.gray[2] : theme.colors.gray[8]
+          }`,
         },
-      }} {...props}>
-      <Stack gap='lg' style={(theme) => ({
-        marginTop: rem(12), paddingTop: rem(32),
-        borderTop: `1px solid ${colorScheme === 'light' ? theme.colors.gray[2] : theme.colors.gray[8]}`,
-      })}>
+        body: {
+          padding: rem(40),
+        }
+      })} {...props}>
+      <Stack gap='lg'>
         <HelpEntry shortcut='/' description='Focuses search input from main window.' />
         <HelpEntry shortcut='S' description='Focuses search input from main window.' />
         <HelpEntry shortcut='ESC' description='Clears search input and removes focus.' />
