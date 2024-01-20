@@ -8,8 +8,8 @@
   grid-row-gap: rem(32px);
   width: 100%;
   
-  @media (min-width: rem(740px)) {
-    grid-template-columns: auto 1fr auto;
+  @media (min-width: rem(860px)) {
+    grid-template-columns: 1fr 3fr 1fr;
     grid-template-rows: 1fr;
     grid-template-areas: "sitelogo filterbar actionmenu";
   }
