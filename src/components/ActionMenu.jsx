@@ -22,6 +22,10 @@ export default function ActionMenu() {
       opened ? close() : open();
       umamiTrack(`${umamiEventTypes.key}: Help Menu`);
     }
+    if (e.key === 'r') {
+      dispatch({type: 'reset'});
+      umamiTrack(`${umamiEventTypes.key}: Reset Filter`);
+    }
   });
 
   return (
