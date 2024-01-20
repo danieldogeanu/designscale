@@ -1,12 +1,14 @@
 import { Box, useMantineColorScheme } from '@mantine/core';
-import { IconHelpCircle, IconMoonStars, IconSun } from '@tabler/icons-react';
+import { IconEraser, IconHelpCircle, IconMoonStars, IconSun } from '@tabler/icons-react';
 import { useDisclosure, useWindowEvent } from '@mantine/hooks';
 import { umamiEventTypes, umamiTrack } from '../utils';
+import useFilter from '../hooks/useFilter';
 import IconButton from '../components/IconButton';
 import HelpDrawer from './HelpDrawer';
 import classes from '../styles/actionMenu.module.scss';
 
 export default function ActionMenu() {
+  const {dispatch} = useFilter();
   const [opened, {open, close}] = useDisclosure(false);
   const {colorScheme, toggleColorScheme} = useMantineColorScheme();
   const isLightTheme = colorScheme === 'light' || colorScheme === 'auto';
@@ -20,11 +22,20 @@ export default function ActionMenu() {
       opened ? close() : open();
       umamiTrack(`${umamiEventTypes.key}: Help Menu`);
     }
+    if (e.key === 'r') {
+      dispatch({type: 'reset'});
+      umamiTrack(`${umamiEventTypes.key}: Reset Filter`);
+    }
   });
 
   return (
     <>
       <Box className={classes.actionMenu}>
+        <IconButton 
+          icon={IconEraser}
+          label='Reset Filter'
+          onClick={() => dispatch({type: 'reset'})}
+        />
         <IconButton
           icon={isLightTheme ? IconMoonStars : IconSun}
           onClick={() => toggleColorScheme()}

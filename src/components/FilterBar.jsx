@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { NumberInput, Select, Box, Group, rem } from "@mantine/core";
 import { useWindowEvent } from "@mantine/hooks";
 import { IconX } from '@tabler/icons-react';
@@ -10,21 +10,30 @@ import classes from '../styles/filterBar.module.scss';
 
 export default function FilterBar() {
   const searchRef = useRef();
-  const {state, dispatch} = useFilter();  
-  const [filterValue, setFilterValue] = useState('');
+  const {state, dispatch} = useFilter();
+  const [filterValue, setFilterValue] = useState(state.filter !== null ? state.filter : '');
   const scaleNumbers = [2, 4, 8, 10];
   const scaleValues = scaleNumbers.map((number) => ({
     value: number.toString(), label: `${number}pt Scale`,
   }));
 
-  const SlashKeyShortcut = <ShortcutKey
+  useEffect(() => {
+    // We need to force the Search Number input to take the new value on reset.
+    // We also need to translate `null` into an empty string, because the
+    // NumberInput component doesn't take null as a value, only strings.
+    setFilterValue(state.filter !== null ? state.filter : '');
+  }, [state]);
+
+  const SlashKeyShortcut = (<ShortcutKey
     style={{marginRight: rem(14)}}
     title='Press slash key to focus.'
-  >/</ShortcutKey>;
-  const EscKeyShortcut = <ShortcutKey
+  >/</ShortcutKey>);
+
+  const EscKeyShortcut = (<ShortcutKey
     title='Press ESC key to clear input.'
-  >ESC</ShortcutKey>;
-  const ClearButton = <Group wrap='nowrap' gap={4} 
+  >ESC</ShortcutKey>);
+
+  const ClearButton = (<Group wrap='nowrap' gap={4} 
     style={{marginRight: rem(48)}}>
     {EscKeyShortcut}
     <IconButton 
@@ -36,7 +45,7 @@ export default function FilterBar() {
         e.currentTarget.blur();
       }}
     />
-  </Group>;
+  </Group>);
 
   // Add keypress event listener to focus search input.
   useWindowEvent('keypress', (e) => {
@@ -49,6 +58,7 @@ export default function FilterBar() {
 
   return (
     <Box className={classes.filterBar}>
+
       <NumberInput
         className={classes.search}
         placeholder='Search Number'
@@ -73,6 +83,7 @@ export default function FilterBar() {
         rightSection={filterValue !== '' ? ClearButton : SlashKeyShortcut}
         hideControls
       />
+
       <Select
         className={classes.selector}
         data-umami-event={`${umamiEventTypes.filter}: Scale Selector`}
@@ -80,7 +91,7 @@ export default function FilterBar() {
         size='md'
         radius='md'
         data={scaleValues}
-        defaultValue={scaleValues[1].value.toString()}
+        value={state.scale.toString()}
         onChange={(value) => {
           dispatch({type: 'scale', value});
           const valueLabel = (scaleValues.find((item) => (item.value === value))).label;
@@ -89,17 +100,19 @@ export default function FilterBar() {
         withCheckIcon={false}
         allowDeselect={false}
       />
+
       <NumberInput
         className={classes.size}
         data-umami-event={`${umamiEventTypes.filter}: Numbers Amount`}
         title='Change the amount of numbers from which to generate the scale.'
         size='md'
         radius='md'
-        defaultValue={state.size}
+        value={state.size}
         min={0}
         max={1000000}
         onChange={(value) => dispatch({type: 'size', value})}
       />
+
     </Box>
   );
 }
